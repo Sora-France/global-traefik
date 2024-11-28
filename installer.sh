@@ -1,5 +1,8 @@
 #!/bin/sh
 
+SHELL_ACTIVE="${HOME}/.$(basename $SHELL)rc"
+GTRC="$HOME/.GlobalTraefik/globaltraefikrc.sh"
+
 if [ -d $HOME/.GlobalTraefik ]; then
 	echo "Traefik global est déja installé. Pour le désinstaller, exécuter la commande \`rm -rf ~/.GlobalTraefik\`"
 else
@@ -10,4 +13,9 @@ else
   cd $HOME/.GlobalTraefik
   make init
   cd -
+
+  if ! cat $SHELL_ACTIVE | grep "source $GTRC" >/dev/null; then
+    echo "source $GTRC" >> $SHELL_ACTIVE
+    . $GTRC
+  fi
 fi
