@@ -5,7 +5,7 @@ Network Traefik global pour docker
 
 ### Installation rapide
 ```shell
-curl 
+curl https://raw.githubusercontent.com/Sora-France/global-traefik/refs/heads/develop/installer.sh | sh
 ```
 
 
