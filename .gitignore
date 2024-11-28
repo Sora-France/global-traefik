@@ -1,0 +1,9 @@
+.idea
+./logs
+./logs/*
+logs
+logs/*
+
+### Certs ###
+.docker/traefik/certs/cert.pem
+.docker/traefik/certs/privkey.pem
