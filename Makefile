@@ -1,5 +1,6 @@
 init:
 	-@docker network create global-traefik
+	@./genTls.sh
 	@docker compose up -d
 
 start:
