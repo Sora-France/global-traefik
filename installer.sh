@@ -4,7 +4,7 @@ SHELL_ACTIVE="${HOME}/.$(basename $SHELL)rc"
 GTRC="$HOME/.GlobalTraefik/globaltraefikrc.sh"
 
 if [ -d $HOME/.GlobalTraefik ]; then
-	echo "Traefik global est déja installé. Pour le désinstaller, exécuter la commande \`cd ~ && ./.GlobalTraefik/uninstall && cd -`"
+	echo "Traefik global est déja installé. Pour le désinstaller, exécuter la commande cd ~ && ./.GlobalTraefik/uninstall && cd -"
 else
   echo "Clone du depot"
   git clone https://github.com/Sora-France/global-traefik.git $HOME/.GlobalTraefik --progress
