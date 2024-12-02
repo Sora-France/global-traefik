@@ -39,4 +39,39 @@ mkcert -cert-file .docker/traefik/certs/traefik.crt -key-file .docker/traefik/ce
 # TODO List
 
 - Rendre la réinstallation / mise a jour moins destructrice: Actuellement, ce procédé va supprimer toutes les modifications de config ou de certificats apportés a l'instance installée.
-- Permettre l'agrégation des plusieurs certificats
+- ~~Permettre l'agrégation des plusieurs certificats~~
+
+# Usage
+
+1. Installer "Global Traefik" ([Installation rapide](https://github.com/Sora-France/global-traefik#installation-rapide))
+2. Générer et placer les certificats SSL dans le répertoire `~/.GlobalTraefik/.docker/traefik/certs`
+    - exemple avec [mkcert](https://github.com/FiloSottile/mkcert): 
+        ```bash
+          mkcert -cert-file ~/.GlobalTraefik/.docker/traefik/certs/acme.crt -key-file ~/.GlobalTraefik/.docker/traefik/certs/acme.key "acme.local" "*.acme.local"
+        ```
+3. Redémarrer le traefik global pour prise en compte des nouveaux certificats: `traefik restart`
+4. Ajouter les nouveaux domaines au fichier `host`
+5. Configurer le `docker-compose.yml` du projet final
+    - exemple:
+
+```yaml
+
+services:
+  app:
+#    ...
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`acme.local`, `www.acme.local`)"
+      - "traefik.http.routers.app.tls=true"
+    networks:
+      - internal
+      - global-traefik
+
+networks:
+  internal:
+    driver: bridge
+  global-traefik:
+    name: global-traefik
+    external: true
+
+```
