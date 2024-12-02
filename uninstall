@@ -7,6 +7,6 @@ cd ~
 rm -rf .GlobalTraefik
 
 cat $SHELL_ACTIVE | grep -v ".GlobalTraefik/globaltraefikrc.sh" > "${SHELL_ACTIVE}_tmp"
-mv "${$SHELL_ACTIVE}_tmp" $SHELL_ACTIVE
+mv "${SHELL_ACTIVE}_tmp" $SHELL_ACTIVE
 
 cd - > /dev/null 2> /dev/null
