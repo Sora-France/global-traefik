@@ -8,18 +8,11 @@ Network Traefik global pour docker
 curl https://raw.githubusercontent.com/Sora-France/global-traefik/refs/heads/develop/installer.sh | sh
 ```
 
-
-### Installation manuelle
-
+### Désinstallation
 ```shell
-make init
+cd ~ && ./.GlobalTraefik/uninstall && cd -
 ```
-
-### Démarrage
-
-```shell
-make start
-```
+---
 
 ### Ajout des domaines dans le fichier Hosts
 
@@ -42,3 +35,8 @@ En premier lieu, et si cela n'a pas déjà été effectué sur le poste, il faut
 ```shell
 mkcert -cert-file .docker/traefik/certs/cert.pem -key-file .docker/traefik/certs/privkey.pem "traefik.local"
 ```
+
+# TODO List
+
+- Rendre la réinstallation / mise a jour moins destructrice: Actuellement, ce procédé va supprimer toutes les modifications de config ou de certificats apportés a l'instance installée.
+- Permettre l'agrégation des plusieurs certificats
