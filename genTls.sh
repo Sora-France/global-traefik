@@ -11,5 +11,7 @@ for CERT in $CERT_DIR/*.crt; do
   if [ -f "$KEY" ]; then
     echo "    - certFile: /etc/traefik/certs/$(basename "$CERT")" >> $OUTPUT_FILE
     echo "      keyFile: /etc/traefik/certs/$(basename "$KEY")" >> $OUTPUT_FILE
+  else
+    echo "No such file $(basename "$KEY") to fit $(basename "$CERT") in $CERT_DIR"
   fi
 done

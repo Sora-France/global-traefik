@@ -33,7 +33,7 @@ Ajouter les lignes suivantes et sauvegarder
 En premier lieu, et si cela n'a pas déjà été effectué sur le poste, il faut [installer mkcert](https://github.com/FiloSottile/mkcert) **sur la machine host** (dans le cas d'un WSL, l'installer sur Windows) puis exectuer la commande `mkcert -install`.
 
 ```shell
-mkcert -cert-file .docker/traefik/certs/cert.pem -key-file .docker/traefik/certs/privkey.pem "traefik.local"
+mkcert -cert-file .docker/traefik/certs/traefik.crt -key-file .docker/traefik/certs/traefik.key "traefik.local"
 ```
 
 # TODO List
