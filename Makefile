@@ -3,6 +3,7 @@ init:
 	@docker compose up -d
 
 start:
+	@./genTls
 	@docker compose up -d
 
 stop:
