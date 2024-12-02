@@ -9,9 +9,7 @@ echo "  certificates:" >> $OUTPUT_FILE
 for CERT in $CERT_DIR/*.crt; do
   KEY="${CERT%.crt}.key"
   if [ -f "$KEY" ]; then
-    echo "    - certFile: /etc/traefik/certs/$(basename "$CERT")" >> $OUTPUT_FILE
-    echo "      keyFile: /etc/traefik/certs/$(basename "$KEY")" >> $OUTPUT_FILE
-  else
-    echo "No such file $(basename "$KEY") to fit $(basename "$CERT") in $CERT_DIR"
+    echo "    - certFile: /etc/ssl/traefik/$(basename "$CERT")" >> $OUTPUT_FILE
+    echo "      keyFile: /etc/ssl/traefik/$(basename "$KEY")" >> $OUTPUT_FILE
   fi
 done

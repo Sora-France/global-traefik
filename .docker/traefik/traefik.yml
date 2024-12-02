@@ -24,8 +24,9 @@ ping:
 providers:
   file:
     filename: /etc/traefik/tls.yml
+    watch: true
   docker:
     endpoint: unix:///var/run/docker.sock
     watch: true
     exposedByDefault: true
-    defaultRule: "Host(`traefik.local`)"
+    defaultRule: "HostRegexp(`{subdomain:[a-zA-Z0-9-]+}.local`, `{subdomain1:[a-zA-Z0-9-]+}.{subdomain2:[a-zA-Z0-9-]+}.local`)"
